@@ -164,6 +164,10 @@ module FruitToLime
                 CustomValue.new
             when :custom_field_reference then
                 CustomFieldReference.new
+            when :settings then
+                Settings.new
+            when :class_settings then
+                ClassSettings.new
             else
                 raise "Unknown type: #{type}"
             end.get_import_rows

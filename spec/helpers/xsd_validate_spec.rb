@@ -7,6 +7,10 @@ describe FruitToLime::SerializeHelper do
     describe "Validate according to xsd" do
         let(:validate_result) {
             i = FruitToLime::RootModel.new
+            i.settings.with_organization do |s|
+                s.set_custom_field({:id=>"2", :title=>"cf title"})
+                s.set_custom_field({:id=>"3", :title=>"cf title2"})
+            end
             o = FruitToLime::Organization.new
             o.name = "Ankeborgs bibliotek"
             o.with_source do |source|
