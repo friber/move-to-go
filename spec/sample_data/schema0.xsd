@@ -13,12 +13,12 @@
   </xs:complexType>
   <xs:complexType name="Settings">
     <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="1" name="Organization" type="IoClassSettings" />
-      <xs:element minOccurs="0" maxOccurs="1" name="Person" type="IoClassSettings" />
-      <xs:element minOccurs="0" maxOccurs="1" name="Deal" type="IoClassSettings" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Organization" type="ClassSettings" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Person" type="ClassSettings" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Deal" type="ClassSettings" />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="IoClassSettings">
+  <xs:complexType name="ClassSettings">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="1" name="CustomFields" type="ArrayOfCustomField" />
     </xs:sequence>
@@ -142,7 +142,6 @@
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="1" name="Id" type="xs:string" />
       <xs:element minOccurs="0" maxOccurs="1" name="IntegrationId" type="xs:string" />
-      <xs:element minOccurs="0" maxOccurs="1" name="Title" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="CoworkerReference">
