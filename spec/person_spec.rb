@@ -8,47 +8,39 @@ describe "Person" do
 
     it "can set a customfield" do
         person.set_custom_field({:integration_id=>'the key',
-            :title=> 'the title',
             :value=> 'the value'})
 
         value = person.custom_values[0]
         field = value.field
         field.integration_id.should eq 'the key'
-        field.title.should eq 'the title'
         value.value.should eq 'the value'
     end
 
     it "will set custom field with same integration_id to the last value" do
         person.set_custom_field({:integration_id=>'the key',
-            :title=> 'the title',
             :value=> 'the value'})
 
         person.set_custom_field({:integration_id=>'the key',
-            :title=> 'the title 2',
             :value=> 'the value 2'})
         value = person.custom_values[0]
         field = value.field
 
         person.custom_values.length.should eq 1 
         field.integration_id.should eq 'the key'
-        field.title.should eq 'the title 2'
         value.value.should eq 'the value 2'
     end
 
     it "will set custom field with same id to the last value" do
         person.set_custom_field({:id=>'the id',
-            :title=> 'the title',
             :value=> 'the value'})
 
         person.set_custom_field({:id=>'the id',
-            :title=> 'the title 2',
             :value=> 'the value 2'})
         value = person.custom_values[0]
         field = value.field
 
         person.custom_values.length.should eq 1 
         field.id.should eq 'the id'
-        field.title.should eq 'the title 2'
         value.value.should eq 'the value 2'
     end
 
