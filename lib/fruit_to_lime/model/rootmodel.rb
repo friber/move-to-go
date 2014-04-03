@@ -142,7 +142,7 @@ module FruitToLime
 
         def to_rexml(doc)
             element_name = serialize_name
-            elem = doc.add_element(element_name,{"Version"=>"v1_0"})
+            elem = doc.add_element(element_name,{"Version"=>"v2_0"})
             SerializeHelper::serialize_variables_rexml(elem, self)
         end
     end

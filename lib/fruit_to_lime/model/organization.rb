@@ -114,7 +114,7 @@ module FruitToLime
                  { :id => :email, :type => :string },
                  { :id => :web_site, :type => :string },
                  { :id => :employees, :type => :persons },
-                 { :id => :custom_fields, :type => :custom_fields },
+                 { :id => :custom_values, :type => :custom_values },
                  { :id => :tags, :type => :tags },
                  { :id => :responsible_coworker, :type => :coworker_reference}
                 ]

@@ -31,6 +31,24 @@ describe FruitToLime::SerializeHelper do
         end
     end
 
+    describe "Serialize custom value with xml inside" do
+        let(:serialized) {
+            v = FruitToLime::CustomValue.new
+            v.value = "<text>"
+            v.field = FruitToLime::CustomFieldReference.new()
+            v.field.id = "1"
+            v.field.title = "<text2>"
+            FruitToLime::SerializeHelper::serialize(v,-1)
+        }
+        it "should contain encoded text" do
+            serialized.should match(/<Value>[\n ]*&lt;text&gt;[\n ]*<\/Value>/)
+        end
+        it "should contain encoded text2" do
+            serialized.should match(/<Title>[\n ]*&lt;text2&gt;[\n ]*<\/Title>/)
+        end
+
+    end
+
     describe "Serialize without data" do
         let(:serialized) {
             p = FruitToLime::Person.new
@@ -41,7 +59,7 @@ describe FruitToLime::SerializeHelper do
             serialized.should_not match(/<Position>/)
             serialized.should_not match(/<AlternativeEmail>/)
             serialized.should_not match(/<Tags>/)
-            serialized.should_not match(/<CustomFields>/)
+            serialized.should_not match(/<CustomValues>/)
         end
         it "should be utf-8" do
             serialized.encoding.should equal Encoding::UTF_8
@@ -174,6 +192,9 @@ describe FruitToLime::SerializeHelper do
         }
         it "should contain name" do
             serialized.should match(/Ankeborgs bibliotek/)
+        end
+        it "should have version" do
+            serialized.should match(/<GoImport Version='v2_0'/)
         end
         it "should be utf-8" do
             serialized.encoding.should equal Encoding::UTF_8

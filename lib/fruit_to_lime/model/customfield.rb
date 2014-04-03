@@ -1,8 +1,8 @@
 module FruitToLime
-    class CustomField
+    class CustomFieldReference
         include SerializeHelper
 
-        attr_accessor :id, :integration_id, :title, :value
+        attr_accessor :id, :integration_id, :title
 
         def initialize(opt=nil)
             if opt != nil
@@ -14,7 +14,35 @@ module FruitToLime
         end
 
         def serialize_variables
-            [:id, :integration_id, :title, :value].map {|p| { :id => p, :type => :string } }
+            [:id, :integration_id, :title].map {|p| { :id => p, :type => :string } }
+        end
+
+        def get_import_rows
+            serialize_variables.map do |p|
+                map_to_row p
+            end
+        end
+
+        def serialize_name
+            "CustomFieldReference"
+        end
+    end
+
+    class CustomField
+        include SerializeHelper
+        attr_accessor :id, :integration_id, :title
+
+        def initialize(opt=nil)
+            if opt != nil
+                serialize_variables.each do |myattr|
+                    val = opt[myattr[:id]]
+                    instance_variable_set("@" + myattr[:id].to_s, val) if val != nil
+                end
+            end
+        end
+
+        def serialize_variables
+            [:id, :integration_id, :title].map {|p| { :id => p, :type => :string } }
         end
 
         def get_import_rows
@@ -25,6 +53,35 @@ module FruitToLime
 
         def serialize_name
             "CustomField"
+        end
+    end
+
+    class CustomValue
+        include SerializeHelper
+        attr_accessor :field, :value
+
+        def initialize(opt=nil)
+            if opt != nil
+                serialize_variables.each do |myattr|
+                    val = opt[myattr[:id]]
+                    instance_variable_set("@" + myattr[:id].to_s, val) if val != nil
+                end
+            end
+        end
+
+        def serialize_variables
+            [ { :id =>:field, :type => :custom_field_reference },
+                { :id =>:value, :type => :string }]
+        end
+
+        def get_import_rows
+            serialize_variables.map do |p|
+                map_to_row p
+            end
+        end
+
+        def serialize_name
+            "CustomValue"
         end
     end
 end

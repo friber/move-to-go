@@ -11,10 +11,11 @@ describe "Person" do
             :title=> 'the title',
             :value=> 'the value'})
 
-        field = @person.custom_fields[0]
+        value = @person.custom_values[0]
+        field = value.field
         field.integration_id.should eq 'the key'
         field.title.should eq 'the title'
-        field.value.should eq 'the value'
+        value.value.should eq 'the value'
     end
 
     it "should have a firstname if no lastname" do
