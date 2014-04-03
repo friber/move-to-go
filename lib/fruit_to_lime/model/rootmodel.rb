@@ -6,8 +6,8 @@ module FruitToLime
         attr_accessor :organizations, :coworkers, :deals, :notes, :import_coworker
         def serialize_variables
             [
-             {:id => :organizations, :type => :organizations},
              {:id => :coworkers, :type => :coworkers},
+             {:id => :organizations, :type => :organizations},
              {:id => :deals, :type => :deals},
              {:id => :notes, :type => :notes},
             ]

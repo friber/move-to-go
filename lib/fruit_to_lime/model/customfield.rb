@@ -1,6 +1,6 @@
 module FruitToLime
     class CustomFieldReference
-        include SerializeHelper
+        include SerializeHelper, ModelWithIntegrationIdSameAs
 
         attr_accessor :id, :integration_id, :title
 
@@ -29,7 +29,7 @@ module FruitToLime
     end
 
     class CustomField
-        include SerializeHelper
+        include SerializeHelper, ModelWithIntegrationIdSameAs
         attr_accessor :id, :integration_id, :title
 
         def initialize(opt=nil)

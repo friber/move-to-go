@@ -57,6 +57,10 @@ module FruitToLime
             yield @source
         end
 
+        def tags
+            @tags
+        end
+
         def serialize_name
             "Person"
         end
