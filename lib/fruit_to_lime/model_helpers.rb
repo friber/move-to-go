@@ -5,7 +5,7 @@ module FruitToLime
             custom_value = CustomValue.new()
             custom_value.value = value
             custom_value.field = field
-            index = @custom_values.find_index do |custom_value| 
+            index = @custom_values.find_index do |custom_value|
                 custom_value.field.same_as?(field)
             end
             if index
@@ -13,7 +13,7 @@ module FruitToLime
             end
 
             @custom_values.push custom_value
-            return custom_value 
+            return custom_value
         end
         def set_custom_field(obj)
             value = obj[:value]
@@ -24,7 +24,7 @@ module FruitToLime
 
     module ModelWithIntegrationIdSameAs
         def same_as?(other)
-            if @integration_id!=nil && @integration_id == other.integration_id 
+            if @integration_id!=nil && @integration_id == other.integration_id
                 return true
             end
             if @id != nil && @id == other.id
@@ -41,7 +41,7 @@ module FruitToLime
         end
         def set_tag(str)
             @tags = [] if @tags == nil
-            if ! @tags.any? {|tag| tag.value = str }  
+            if ! @tags.any? {|tag| tag.value = str }
                 @tags.push(Tag.new(str))
             end
         end

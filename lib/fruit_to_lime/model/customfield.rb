@@ -30,7 +30,7 @@ module FruitToLime
 
     class CustomField
         include SerializeHelper, ModelWithIntegrationIdSameAs
-        attr_accessor :id, :integration_id, :title
+        attr_accessor :id, :integration_id, :title, :type
 
         def initialize(opt=nil)
             if opt != nil
@@ -42,7 +42,7 @@ module FruitToLime
         end
 
         def serialize_variables
-            [:id, :integration_id, :title].map {|p| { :id => p, :type => :string } }
+            [:id, :integration_id, :title, :type].map {|p| { :id => p, :type => :string } }
         end
 
         def get_import_rows
