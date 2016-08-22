@@ -31,4 +31,9 @@ EOF
     s.test_files    = Dir.glob('spec/**/*.rb')
     s.executables   = ['go-import']
     s.require_paths = ['lib']
+
+    s.post_install_message = <<-MESSAGE
+!    The 'go-import' gem has been deprecated and has been replaced by 'move-to-go'.
+!    See: https://rubygems.org/gems/move-to-go
+MESSAGE
 end

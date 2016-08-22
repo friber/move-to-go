@@ -4,6 +4,8 @@ module GoImport
         Dir.glob(::File.join(::File.dirname(::File.absolute_path(__FILE__)),folder), &method(:require))
     end
 
+    warn "[DEPRECATION] This gem has been renamed to 'move-to-go' and will no longer be supported. Please switch to 'move-to-go' as soon as possible.\n\n"
+
     require_relative 'go_import/errors'
     require_relative 'go_import/serialize_helper'
     require_relative 'go_import/model_helpers'
